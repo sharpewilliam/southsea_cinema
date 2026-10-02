@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
@@ -15,6 +17,7 @@ class MovieListing extends StatefulWidget {
 
 class _MovieListingState extends State<MovieListing> {
   int ticketQuantity = 0;
+  String orderMessage = "";
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +76,21 @@ class _MovieListingState extends State<MovieListing> {
               ],
             ),
             SizedBox(height: 20),
-            Text("Place Order Button Here"),
+            ElevatedButton(
+              onPressed: () {
+                if (ticketQuantity == 0) {
+                  setState(() {
+                    orderMessage = "Please select at least 1 ticket to order";
+                  });
+                }else {
+                  setState(() {
+                  orderMessage = "you have ordered $ticketQuantity ticket(s)";
+                  });
+                }
+              },
+              child: const Text("Order Tickets"),
+            ),
+          Text(orderMessage),
           ],
         ),
       ),
