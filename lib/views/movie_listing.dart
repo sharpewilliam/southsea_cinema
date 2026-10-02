@@ -15,7 +15,19 @@ class MovieListing extends StatelessWidget {
         elevation: 0,
       ),
       drawer: const NavDrawer(),
-      body: const SizedBox.shrink(),
+      body: const Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text("The Lord Of The Rings: The Fellowship of the ring",
+          style: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(height: 30),
+          Text("This is a placeholder for the movie listing page. It will display a list of movies currently showing in the cinema."),
+        ],
+      ),
     );
   }
 }
