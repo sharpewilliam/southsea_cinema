@@ -2,8 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
 
-class MovieListing extends StatelessWidget {
+
+class MovieListing extends StatefulWidget {
   const MovieListing({super.key});
+
+  @override
+  State<MovieListing> createState() {
+    return _MovieListingState();
+  }
+}
+
+
+class _MovieListingState extends State<MovieListing> {
+  int ticketQuantity = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +26,7 @@ class MovieListing extends StatelessWidget {
         elevation: 0,
       ),
       drawer: const NavDrawer(),
-      body: const Padding(
+      body: Padding(
         padding: EdgeInsets.all(10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,16 +43,33 @@ class MovieListing extends StatelessWidget {
             SizedBox(height: 20),
             Text("Southsea Cinama Room"),
             Text("Tuesday 20th June 2027 17:30 - ends at 19:30"),
-            Text("Please note that any discounts / membershib benifits will be applied once you have selected your tickets and proceed to checkout."),
+            Text("Please note that any discounts / membership benifits will be applied once you have selected your tickets and proceed to checkout."),
             SizedBox(height: 20),
             Text("Select Quantity (Max 5)"),
             Text("Select Ticket"),
             Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               spacing: 20,
               children: [
-                Text("Dropdown Button Here"),
-                Text("Ticket Details Here"),
+                DropdownMenu<int>(
+                  initialSelection: 0,
+                  onSelected: (int? value) {
+                    if (value != null) {
+                      setState(() {
+                        ticketQuantity = value;
+                      });
+                    }
+                  },
+                dropdownMenuEntries: [
+                  DropdownMenuEntry(value: 0, label: "No Tickets"),
+                  DropdownMenuEntry(value: 1, label: "1 Ticket"),
+                  DropdownMenuEntry(value: 2, label: "2 Tickets"),
+                  DropdownMenuEntry(value: 3, label: "3 Tickets"),
+                  DropdownMenuEntry(value: 4, label: "4 Tickets"),
+                  DropdownMenuEntry(value: 5, label: "5 Tickets"),
+                ],
+                ),
+                Text("£4.50 each"),
               ],
             ),
             SizedBox(height: 20),
