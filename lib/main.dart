@@ -13,7 +13,7 @@ class SouthseaCinemaApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Southsea Cinima & Arts Centre",
+      title: appTitle,
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: cinemaBackground,

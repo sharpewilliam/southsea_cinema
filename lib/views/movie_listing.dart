@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
@@ -30,32 +28,35 @@ class _MovieListingState extends State<MovieListing> {
       ),
       drawer: const NavDrawer(),
       body: Padding(
-        padding: EdgeInsets.all(10),
+        padding: EdgeInsets.all(cinemaPadding),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          spacing: 10,
+          spacing: cinemaMediumSpacing,
           children: [
             Text("The Lord Of The Rings: The Fellowship of the Ring",
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              ),
+            style: cinemaHeaderStyle
             ),
-            SizedBox(height: 20),
+            SizedBox(height: cinemaLargeSpacing),
             Text("The Lord of the Rings: The Fellowship of the Ring is a 2001 epic fantasy adventure film directed by Peter Jackson, based on the first volume of J. R. R. Tolkien's The Lord of the Rings. It follows the story of the fellowship, a group coming from all over middle earth united for one goal. The Destruction of the one ring."),
-            SizedBox(height: 20),
+            SizedBox(height: cinemaLargeSpacing),
             Text("Southsea Cinama Room"),
             Text("Tuesday 20th June 2027 17:30 - ends at 19:30"),
             Text("Please note that any discounts / membership benifits will be applied once you have selected your tickets and proceed to checkout."),
-            SizedBox(height: 20),
+            SizedBox(height: cinemaLargeSpacing),
             Text("Select Quantity (Max 5)"),
-            Text("Select Ticket"),
+            Text("Tickets",
+            style: cinemaHeaderStyle
+            ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               spacing: 20,
               children: [
                 DropdownMenu<int>(
                   initialSelection: 0,
+                  textStyle: TextStyle(color: cinemaFontWhite),
+                  menuStyle: MenuStyle(
+                    backgroundColor: WidgetStatePropertyAll(cinemaFontWhite),
+                  ),
                   onSelected: (int? value) {
                     if (value != null) {
                       setState(() {
@@ -77,6 +78,10 @@ class _MovieListingState extends State<MovieListing> {
             ),
             SizedBox(height: 20),
             ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: cinemaBrand,
+                foregroundColor: cinemaFontWhite,
+              ),
               onPressed: () {
                 if (ticketQuantity == 0) {
                   setState(() {

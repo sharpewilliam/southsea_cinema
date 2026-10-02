@@ -20,7 +20,7 @@ class HomeView extends StatelessWidget {
       drawer: const NavDrawer(),
       body: const Center(
         child: Padding(
-          padding: EdgeInsets.all(16.0),
+          padding: EdgeInsets.all(cinemaPadding),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
