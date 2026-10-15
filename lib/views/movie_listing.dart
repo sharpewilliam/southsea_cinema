@@ -14,7 +14,6 @@ class MovieListing extends StatefulWidget {
 class _MovieListingState extends State<MovieListing> {
   int ticketQuantity = 0;
   String orderMessage = "";
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
