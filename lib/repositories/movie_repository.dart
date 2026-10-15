@@ -25,6 +25,17 @@ class MovieRepository {
         ticketPrice: 12.50,
         posterImagePath: 'assets/images/lotr ttt.jpeg',
       ),
+      Movie(
+        id: 'movie-003',
+        title: 'The Lord of the Rings The Fellowship of the Ring',
+        synopsis:
+            'A young hobbit embarks on a perilous journey with a fellowship of companions to destroy a powerful ring and prevent the Dark Lord Sauron from conquering Middle-earth.',
+        ageRating: '12A',
+        runtime: '178 minutes',
+        screeningTime: '19:30',
+        ticketPrice: 12.50,
+        posterImagePath: 'assets/images/lotr fotr.jpeg',
+      ),
     ];
   }
 }
