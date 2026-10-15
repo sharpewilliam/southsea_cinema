@@ -105,7 +105,7 @@ class _MovieOrderState extends State<MovieOrder> {
                           DropdownMenuEntry(value: 5, label: "5 Tickets"),
                         ],
                       ),
-                      Text("£${widget.movie.ticketPrice} each"),
+                      Text("£${widget.movie.ticketPrice.toStringAsFixed(2)} each"),
                     ],
                   ),
                   SizedBox(height: 20),
@@ -123,7 +123,7 @@ class _MovieOrderState extends State<MovieOrder> {
                       } else {
                         setState(() {
                           final total =
-                              widget.movie.ticketPrice * ticketQuantity;
+                              (widget.movie.ticketPrice * ticketQuantity).toStringAsFixed(2);
 
                           orderMessage =
                               "you have ordered $ticketQuantity ticket(s) for a total of $total";
