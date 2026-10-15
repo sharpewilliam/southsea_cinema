@@ -16,5 +16,5 @@ class Movie {
     required this.screeningTime,
     required this.ticketPrice,
     required this.posterImagePath,
-  })
+  });
 }
