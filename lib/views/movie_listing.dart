@@ -141,20 +141,13 @@ class _MovieOrderState extends State<MovieOrder> {
   }
 }
 
-class MovieListing extends StatefulWidget {
+class MovieListing extends StatelessWidget {
   const MovieListing({super.key});
 
-  @override
-  State<MovieListing> createState() {
-    return _MovieListingState();
-  }
-}
-
-class _MovieListingState extends State<MovieListing> {
-  final movies = MovieRepository().getMovies();
 
   @override
   Widget build(BuildContext context) {
+    final movies = MovieRepository().getMovies();
     return Scaffold(
         appBar: AppBar(
           title: const Text(appTitle, style: cinemaHeaderStyle),
