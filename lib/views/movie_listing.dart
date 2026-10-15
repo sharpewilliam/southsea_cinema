@@ -25,6 +25,12 @@ class _MovieOrderState extends State<MovieOrder> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
           title: const Text(appTitle, style: cinemaHeaderStyle),
           backgroundColor: cinemaSurface,
           iconTheme: const IconThemeData(color: cinemaBrand),
@@ -44,18 +50,38 @@ class _MovieOrderState extends State<MovieOrder> {
                 mediumSpacing = cinemaMediumSpacing;
                 largeSpacing = cinemaLargeSpacing;
               }
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                spacing: mediumSpacing,
+              return ListView(
                 children: [
-                  Text("The Lord Of The Rings: The Fellowship of the Ring",
-                      style: cinemaHeaderStyle),
-                  SizedBox(height: largeSpacing),
                   Text(
-                      "The Lord of the Rings: The Fellowship of the Ring is a 2001 epic fantasy adventure film directed by Peter Jackson, based on the first volume of J. R. R. Tolkien's The Lord of the Rings. It follows the story of the fellowship, a group coming from all over middle earth united for one goal. The Destruction of the one ring."),
+                    widget.movie.title,
+                    style: cinemaHeaderStyle
+                    ),
                   SizedBox(height: largeSpacing),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Image.asset(
+                      widget.movie.posterImagePath,
+                      height: 200,
+                      fit: BoxFit.contain,
+                      ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(height: 10),
+                        Text(widget.movie.synopsis),
+                      ]
+                      )
+                      )
+                      ]
+                      ),
                   Text("Southsea Cinama Room"),
-                  Text("Tuesday 20th June 2027 17:30 - ends at 19:30"),
+                  Text("Screening time: ${widget.movie.screeningTime}"),
+                  Text("Age rating: ${widget.movie.ageRating}"),
+                  Text("Runtime: ${widget.movie.runtime}"),
+                  SizedBox(height: largeSpacing),
                   Text(
                       "Please note that any discounts / membership benifits will be applied once you have selected your tickets and proceed to checkout."),
                   SizedBox(height: largeSpacing),
@@ -88,7 +114,7 @@ class _MovieOrderState extends State<MovieOrder> {
                           DropdownMenuEntry(value: 5, label: "5 Tickets"),
                         ],
                       ),
-                      Text("£4.50 each"),
+                      Text("£${widget.movie.ticketPrice} each"),
                     ],
                   ),
                   SizedBox(height: 20),
@@ -105,8 +131,10 @@ class _MovieOrderState extends State<MovieOrder> {
                         });
                       } else {
                         setState(() {
+                          final total = widget.movie.ticketPrice * ticketQuantity;
+
                           orderMessage =
-                              "you have ordered $ticketQuantity ticket(s)";
+                              "you have ordered $ticketQuantity ticket(s) for a total of $total";
                         });
                       }
                     },
