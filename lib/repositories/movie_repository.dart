@@ -2,7 +2,7 @@ import 'package:southsea_cinema/models/movie.dart';
 
 class MovieRepository {
   List<Movie> getMovies() {
-    return const[
+    return const [
       Movie(
         id: 'movie-001',
         title: 'The Lord of the Rings return of the king',
@@ -14,7 +14,7 @@ class MovieRepository {
         ticketPrice: 12.50,
         posterImagePath: 'assets/images/lotr roth.jpeg',
       ),
-    Movie(
+      Movie(
         id: 'movie-002',
         title: 'The Lord of the Rings The two Towers',
         synopsis:

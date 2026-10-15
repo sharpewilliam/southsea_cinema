@@ -42,21 +42,19 @@ class MovieCard extends StatelessWidget {
             Text(movie.synopsis),
             const SizedBox(height: 10),
             ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: cinemaBrand,
-                foregroundColor: cinemaFontWhite,
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.zero,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: cinemaBrand,
+                  foregroundColor: cinemaFontWhite,
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.zero,
+                  ),
                 ),
-              ),
-              onPressed: () {
-                Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                return MovieOrder(movie: movie);
-              }));
-              },
-              child: const Text('Book Tickets')
-            ),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return MovieOrder(movie: movie);
+                  }));
+                },
+                child: const Text('Book Tickets')),
           ],
         ),
       ),

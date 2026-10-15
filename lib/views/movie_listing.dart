@@ -5,7 +5,6 @@ import 'package:southsea_cinema/repositories/movie_repository.dart';
 import 'package:southsea_cinema/widgets/movie_card.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
 
-
 class MovieOrder extends StatefulWidget {
   final Movie movie;
 
@@ -52,31 +51,23 @@ class _MovieOrderState extends State<MovieOrder> {
               }
               return ListView(
                 children: [
-                  Text(
-                    widget.movie.title,
-                    style: cinemaHeaderStyle
-                    ),
+                  Text(widget.movie.title, style: cinemaHeaderStyle),
                   SizedBox(height: largeSpacing),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Image.asset(
+                  Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                    Image.asset(
                       widget.movie.posterImagePath,
                       height: 200,
                       fit: BoxFit.contain,
-                      ),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const SizedBox(height: 10),
-                        Text(widget.movie.synopsis),
-                      ]
-                      )
-                      )
-                      ]
-                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                          const SizedBox(height: 10),
+                          Text(widget.movie.synopsis),
+                        ]))
+                  ]),
                   Text("Southsea Cinama Room"),
                   Text("Screening time: ${widget.movie.screeningTime}"),
                   Text("Age rating: ${widget.movie.ageRating}"),
@@ -131,7 +122,8 @@ class _MovieOrderState extends State<MovieOrder> {
                         });
                       } else {
                         setState(() {
-                          final total = widget.movie.ticketPrice * ticketQuantity;
+                          final total =
+                              widget.movie.ticketPrice * ticketQuantity;
 
                           orderMessage =
                               "you have ordered $ticketQuantity ticket(s) for a total of $total";
@@ -149,7 +141,6 @@ class _MovieOrderState extends State<MovieOrder> {
   }
 }
 
-
 class MovieListing extends StatefulWidget {
   const MovieListing({super.key});
 
@@ -165,19 +156,17 @@ class _MovieListingState extends State<MovieListing> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(appTitle, style: cinemaHeaderStyle),
-        backgroundColor: cinemaSurface,
-      ),
-      drawer: const NavDrawer(),
-      body: ListView(
-        padding: EdgeInsets.all(cinemaPadding),
-        children: [
-          Text("Now Showing", style: cinemaHeaderStyle),
-          for (final movie in movies)
-            MovieCard(movie: movie),
-        ],
-      )
-    );
+        appBar: AppBar(
+          title: const Text(appTitle, style: cinemaHeaderStyle),
+          backgroundColor: cinemaSurface,
+        ),
+        drawer: const NavDrawer(),
+        body: ListView(
+          padding: EdgeInsets.all(cinemaPadding),
+          children: [
+            Text("Now Showing", style: cinemaHeaderStyle),
+            for (final movie in movies) MovieCard(movie: movie),
+          ],
+        ));
   }
 }
