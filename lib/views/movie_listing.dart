@@ -105,7 +105,7 @@ class _MovieOrderState extends State<MovieOrder> {
                           DropdownMenuEntry(value: 5, label: "5 Tickets"),
                         ],
                       ),
-                      Text("£${widget.movie.ticketPrice.toStringAsFixed(2)} each"),
+                      Text("£${widget.movie.formattedPrice} each"),
                     ],
                   ),
                   SizedBox(height: 20),
