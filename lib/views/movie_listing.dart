@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/repositories/movie_repository.dart';
 import 'package:southsea_cinema/widgets/movie_card.dart';
+import 'package:southsea_cinema/widgets/nav_drawer.dart';
 
 class MovieListing extends StatefulWidget {
   const MovieListing({super.key});
@@ -22,17 +23,15 @@ class _MovieListingState extends State<MovieListing> {
         title: const Text(appTitle, style: cinemaHeaderStyle),
         backgroundColor: cinemaSurface,
       ),
-      body: Padding(
+      drawer: const NavDrawer(),
+      body: ListView(
         padding: EdgeInsets.all(cinemaPadding),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('Now Showing', style: cinemaHeaderStyle),
-            for (final movie in movies)
-              MovieCard(movie: movie),
-          ],
-        ),
-      ),
+        children: [
+          Text("Now Showing", style: cinemaHeaderStyle),
+          for (final movie in movies)
+            MovieCard(movie: movie),
+        ],
+      )
     );
   }
 }
