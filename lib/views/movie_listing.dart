@@ -124,7 +124,7 @@ class _MovieOrderState extends State<MovieOrder> {
                                   .toStringAsFixed(2);
 
                           orderMessage =
-                              "you have ordered $ticketQuantity ticket(s) for a total of $total";
+                              "you have ordered $ticketQuantity ticket(s) for a total of £$total";
                         });
                       }
                     },

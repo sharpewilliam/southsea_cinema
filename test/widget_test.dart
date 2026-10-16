@@ -34,6 +34,12 @@ void main() {
       await tester.tap(find.text("Book Tickets").first);
       await tester.pumpAndSettle();
       expect(find.text("Select Quantity (Max 5)"), findsOneWidget);
+      final orderButton = find.text("Order Tickets");
+      await tester.scrollUntilVisible(
+        orderButton,
+        300,
+        scrollable: find.byType(Scrollable).first,
+      );
       expect(find.text("Order Tickets"), findsOneWidget);
   });
 
@@ -61,7 +67,7 @@ void main() {
       await tester.pump();
       await tester.tap(find.text("Order Tickets"));
       await tester.pump();
-      expect(find.text("you have ordered 4 ticket(s) for a total of 50.00"), findsOneWidget);
+      expect(find.text("you have ordered 4 ticket(s) for a total of £50.00"), findsOneWidget);
   });
   },
   );
