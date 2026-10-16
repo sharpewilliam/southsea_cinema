@@ -25,5 +25,19 @@ void main() {
       expect(find.byType(MovieCard), findsNWidgets(3));
       expect(find.text('Book Tickets'), findsNWidgets(3));
     });
+    
+    testWidgets("test navigating to order screen",
+    (WidgetTester tester) async {
+      await tester.pumpWidget(
+          const MaterialApp(home: MovieListing()),
+        );
+      await tester.tap(find.text("Book Tickets").first);
+      await tester.pumpAndSettle();
+      expect(find.text("Select Quantity (Max 5)"), findsOneWidget);
+      expect(find.text("Order Tickets"), findsOneWidget);
   });
+
+
+  },
+  );
 }
