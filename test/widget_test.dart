@@ -55,6 +55,13 @@ void main() {
       await tester.tap(find.text("Order Tickets"));
       await tester.pump();
       expect(find.text("Please select at least 1 ticket to order"), findsOneWidget);
+      await tester.tap(find.text("No Tickets").first);
+      await tester.pump();
+      await tester.tap(find.text("4 Tickets").last);
+      await tester.pump();
+      await tester.tap(find.text("Order Tickets"));
+      await tester.pump();
+      expect(find.text("you have ordered 4 ticket(s) for a total of 50.00"), findsOneWidget);
   });
   },
   );
