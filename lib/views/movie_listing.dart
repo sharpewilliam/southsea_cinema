@@ -40,13 +40,10 @@ class _MovieOrderState extends State<MovieOrder> {
           padding: EdgeInsets.all(cinemaPadding),
           child: LayoutBuilder(
             builder: (context, constraints) {
-              late double mediumSpacing;
               late double largeSpacing;
               if (constraints.maxWidth < 600) {
-                mediumSpacing = cinemaMediumSpacing / 2;
                 largeSpacing = cinemaLargeSpacing / 2;
               } else {
-                mediumSpacing = cinemaMediumSpacing;
                 largeSpacing = cinemaLargeSpacing;
               }
               return ListView(
