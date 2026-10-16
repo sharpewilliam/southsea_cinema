@@ -2,9 +2,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:southsea_cinema/models/movie.dart';
 import 'package:southsea_cinema/repositories/movie_repository.dart';
 
-
 void main() {
-  group("movie repository tests",() {
+  group("movie repository tests", () {
     test("getMovieById returns matching movie when the id exists", () {
       final MovieRepository repository = MovieRepository();
       final Movie? movie = repository.getMovieById("movie-003");

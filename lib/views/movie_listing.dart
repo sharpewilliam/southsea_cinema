@@ -123,7 +123,8 @@ class _MovieOrderState extends State<MovieOrder> {
                       } else {
                         setState(() {
                           final total =
-                              (widget.movie.ticketPrice * ticketQuantity).toStringAsFixed(2);
+                              (widget.movie.ticketPrice * ticketQuantity)
+                                  .toStringAsFixed(2);
 
                           orderMessage =
                               "you have ordered $ticketQuantity ticket(s) for a total of $total";
@@ -143,7 +144,6 @@ class _MovieOrderState extends State<MovieOrder> {
 
 class MovieListing extends StatelessWidget {
   const MovieListing({super.key});
-
 
   @override
   Widget build(BuildContext context) {
