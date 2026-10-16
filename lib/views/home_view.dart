@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:southsea_cinema/constants.dart';
+import 'package:southsea_cinema/repositories/movie_repository.dart';
+import 'package:southsea_cinema/widgets/movie_card.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
 
 class HomeView extends StatelessWidget {
@@ -7,35 +9,19 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final movies = MovieRepository().getMovies();
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          appTitle,
-          style: cinemaHeaderStyle,
+        appBar: AppBar(
+          title: const Text(appTitle, style: cinemaHeaderStyle),
+          backgroundColor: cinemaSurface,
         ),
-        backgroundColor: cinemaSurface,
-        iconTheme: const IconThemeData(color: cinemaBrand),
-        elevation: 0,
-      ),
-      drawer: const NavDrawer(),
-      body: const Center(
-        child: Padding(
+        drawer: const NavDrawer(),
+        body: ListView(
           padding: EdgeInsets.all(cinemaPadding),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Welcome to $appTitle',
-                style: TextStyle(
-                  color: cinemaFontWhite,
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
+          children: [
+            Text("Now Showing", style: cinemaHeaderStyle),
+            for (final movie in movies) MovieCard(movie: movie),
+          ],
+        ));
   }
 }

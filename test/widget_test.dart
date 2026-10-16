@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:southsea_cinema/views/home_view.dart';
 import 'package:southsea_cinema/widgets/movie_card.dart';
 import 'package:southsea_cinema/views/movie_listing.dart';
 
@@ -9,7 +10,7 @@ void main() {
     () {
       testWidgets("Movie Listings displays titles, cards and booking buttons",
           (WidgetTester tester) async {
-        await tester.pumpWidget(const MaterialApp(home: MovieListing()));
+        await tester.pumpWidget(const MaterialApp(home: HomeView()));
         expect(find.text('The Lord of the Rings return of the king'),
             findsOneWidget);
         expect(
@@ -32,7 +33,7 @@ void main() {
       testWidgets("test navigating to order screen",
           (WidgetTester tester) async {
         await tester.pumpWidget(
-          const MaterialApp(home: MovieListing()),
+          const MaterialApp(home: HomeView()),
         );
         await tester.tap(find.text("Book Tickets").first);
         await tester.pumpAndSettle();
@@ -48,7 +49,7 @@ void main() {
 
       testWidgets("test ordering movie tickets", (WidgetTester tester) async {
         await tester.pumpWidget(
-          const MaterialApp(home: MovieListing()),
+          const MaterialApp(home: HomeView()),
         );
         await tester.tap(find.text("Book Tickets").first);
         await tester.pumpAndSettle();
