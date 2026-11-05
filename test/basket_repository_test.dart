@@ -36,6 +36,7 @@ void main() {
       expect(basket.getItems().length, 0);
       expect(basket.getTotalItems(), 0);
       expect(basket.totalItemCount, 0);
+      expect(basket.getSubtotal(), 0);
       expect(basket.getTotal(), 0.0);
     });
 
@@ -57,7 +58,8 @@ void main() {
       expect(basket.getItems().length, 2);
       expect(basket.getTotalItems(), 3);
       expect(basket.totalItemCount, 3);
-      expect(basket.getTotal(), 22.0);
+      expect(basket.getSubtotal(), 32.0);
+      expect(basket.getTotal(), 32.0);
     });
   });
 }

@@ -35,7 +35,7 @@ class BasketRepository {
     return getTotalItems();
   }
 
-  double getTotal() {
+  double getSubtotal() {
     double sum = 0.0;
 
     for (final BasketItem item in _items) {
@@ -45,6 +45,10 @@ class BasketRepository {
     return sum;
   }
 
+  double getTotal() {
+    return getSubtotal();
+  }
+  
   void clear() {
     _items.clear();
   }
