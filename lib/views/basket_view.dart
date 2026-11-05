@@ -39,9 +39,9 @@ class _BasketViewState extends State<BasketView> {
       appBar: AppBar(
         title: const Text(appTitle, style: cinemaHeaderStyle),
       ),
-      body: const SingleChildScrollView(
-        padding: EdgeInsets.all(16.0),
-        child: Text('Basket placeholder'),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16.0),
+        child: content,
       ),
     );
   }
