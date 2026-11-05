@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:southsea_cinema/constants.dart';
+import 'package:southsea_cinema/models/basket_item.dart';
 import 'package:southsea_cinema/models/movie.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
 import 'package:southsea_cinema/widgets/primary_button.dart';
+import 'package:southsea_cinema/repositories/basket_repository.dart';
 
 class MovieOrder extends StatefulWidget {
   final Movie movie;
@@ -111,6 +113,10 @@ class _MovieOrderState extends State<MovieOrder> {
                               "Please select at least 1 ticket to order";
                         });
                       } else {
+                        BasketRepository.instance.addItem(BasketItem(
+                          movie: widget.movie,
+                          quantity: ticketQuantity,
+                        ));
                         setState(() {
                           final total =
                               (widget.movie.ticketPrice * ticketQuantity)
