@@ -61,5 +61,23 @@ void main() {
       expect(basket.getSubtotal(), 32.0);
       expect(basket.getTotal(), 32.0);
     });
+
+    test('removes items correctly', () {
+      final BasketRepository basket = BasketRepository.instance;
+      const BasketItem item = BasketItem(
+        movie: testMovie1,
+        quantity: 1,
+      );
+
+      basket.addItem(item);
+      expect(basket.getItems().length, 1);
+      basket.removeItem(0);
+
+      expect(basket.getItems().length, 0);
+      expect(basket.getTotalItems(), 0);
+      expect(basket.totalItemCount, 0);
+      expect(basket.getSubtotal(), 0);
+      expect(basket.getTotal(), 0.0);
+    });
   });
 }
