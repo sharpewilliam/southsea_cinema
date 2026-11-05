@@ -17,4 +17,26 @@ void main() {
 
     expect(find.text('Order Tickets'), findsOneWidget);
   });
+  testWidgets('PrimaryButton invokes onPressed when tapped',
+      (WidgetTester tester) async {
+    bool wasPressed = false;
+
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: PrimaryButton(
+            label: 'Order Tickets',
+            onPressed: () {
+              wasPressed = true;
+            },
+          ),
+        ),
+      ),
+    );
+
+    await tester.tap(find.text('Order Tickets'));
+    await tester.pump();
+
+    expect(wasPressed, isTrue);
+  });
 }
