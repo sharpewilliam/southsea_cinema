@@ -29,4 +29,15 @@ void main() {
   setUp(() {
     BasketRepository.instance.clear();
   });
+
+  group('BasketRepository tests', (){
+    test('starts with an empty basket and zero totals', () {
+      final BasketRepository basket = BasketRepository.instance;
+      expect(basket.getItems().length, 0);
+      expect(basket.getTotalItems(), 0);
+      expect(basket.totalItemCount, 0);
+      expect(basket.getTotal(), 0.0);
+      expect(basket.getTotal(), 0.0);
+    });
+  });
 }
