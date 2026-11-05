@@ -15,7 +15,7 @@ class BasketView extends StatefulWidget {
 class _BasketViewState extends State<BasketView> {
   String _confirmationMessage = '';
 
-Widget _buildEmptyState() {
+  Widget _buildEmptyState() {
     return const Center(
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 32.0),
@@ -26,6 +26,37 @@ Widget _buildEmptyState() {
       ),
     );
   }
+
+  Widget _buildBasketItem(BasketRepository basket, BasketItem item, int index) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Row(
+        children: [
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '${item.quantity} x ${item.movie.ticketPrice}',
+                  style: const TextStyle(fontWeight: FontWeight.w600),
+                ),
+                const SizedBox(height: 4),
+                Text('£${item.totalPrice.toStringAsFixed(2)}'),
+              ],
+            ),
+          ),
+          IconButton(
+            icon: const Icon(Icons.delete_outline, color: cinemaBrand),
+            onPressed: () {
+              setState(() {
+                basket.removeItem(index);
+              });
+            },
+          ),
+        ],
+      ),
+  );
+}
 
   @override
   Widget build(BuildContext context) {
