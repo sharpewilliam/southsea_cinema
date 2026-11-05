@@ -21,7 +21,16 @@ class _BasketViewState extends State<BasketView> {
     final List<BasketItem> items = basket.getItems();
     final Widget content;
     if (items.isEmpty) {
-      content = const Text('Empty basket placeholder');
+      if (_confirmationMessage.isNotEmpty) {
+        content = Column(
+          children: [
+            const Text('Empty basket placeholder'),
+            Text(_confirmationMessage),
+          ],
+        );
+      } else {
+        content = const Text('Empty basket placeholder');
+      }
     } else {
       content = const Text('Basket list placeholder');
     }
