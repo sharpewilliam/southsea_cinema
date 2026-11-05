@@ -36,12 +36,13 @@ Widget _buildEmptyState() {
       if (_confirmationMessage.isNotEmpty) {
         content = Column(
           children: [
-            const Text('Empty basket placeholder'),
+            _buildEmptyState(),
+            const SizedBox(height: 12),
             Text(_confirmationMessage),
           ],
         );
       } else {
-        content = const Text('Empty basket placeholder');
+        content = _buildEmptyState();
       }
     } else {
       content = const Text('Basket list placeholder');
