@@ -79,5 +79,29 @@ void main() {
       expect(basket.getSubtotal(), 0);
       expect(basket.getTotal(), 0.0);
     });
+
+    test('clears all items correctly', () {
+      final BasketRepository basket = BasketRepository.instance;
+      const BasketItem item1 = BasketItem(
+        movie: testMovie1,
+        quantity: 2,
+      );
+
+      const BasketItem item2 = BasketItem(
+        movie: testMovie2,
+        quantity: 1,
+      );
+
+      basket.addItem(item1);
+      basket.addItem(item2);
+      expect(basket.getItems().length, 2);
+      basket.clear();
+
+      expect(basket.getItems().length, 0);
+      expect(basket.getTotalItems(), 0);
+      expect(basket.totalItemCount, 0);
+      expect(basket.getSubtotal(), 0.0);
+      expect(basket.getTotal(), 0.0);
+    });
   });
 }
