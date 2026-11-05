@@ -15,6 +15,18 @@ class BasketView extends StatefulWidget {
 class _BasketViewState extends State<BasketView> {
   String _confirmationMessage = '';
 
+Widget _buildEmptyState() {
+    return const Center(
+      child: Padding(
+        padding: EdgeInsets.symmetric(vertical: 32.0),
+        child: Text(
+          'Your basket is empty',
+          style: TextStyle(fontSize: 16, color: cinemaFontMuted),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final BasketRepository basket = BasketRepository.instance;
