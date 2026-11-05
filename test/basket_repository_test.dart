@@ -37,7 +37,27 @@ void main() {
       expect(basket.getTotalItems(), 0);
       expect(basket.totalItemCount, 0);
       expect(basket.getTotal(), 0.0);
-      expect(basket.getTotal(), 0.0);
+    });
+
+    test('adds items and calculates totals correctly', () {
+      final BasketRepository basket = BasketRepository.instance;
+      const BasketItem item1 = BasketItem(
+        movie: testMovie1,
+        quantity: 2,
+      );
+
+      const BasketItem item2 = BasketItem(
+        movie: testMovie2,
+        quantity: 1,
+      );
+
+      basket.addItem(item1);
+      basket.addItem(item2);
+
+      expect(basket.getItems().length, 2);
+      expect(basket.getTotalItems(), 3);
+      expect(basket.totalItemCount, 3);
+      expect(basket.getTotal(), 22.0);
     });
   });
 }
