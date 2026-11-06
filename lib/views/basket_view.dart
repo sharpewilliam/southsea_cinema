@@ -141,14 +141,17 @@ class _BasketViewState extends State<BasketView> {
           children: [
             _buildEmptyState(),
             const SizedBox(height: 12),
-            Text(_confirmationMessage),
+            Text(
+              _confirmationMessage,
+              style: const TextStyle(fontWeight: FontWeight.bold)
+            ),
           ],
         );
       } else {
         content = _buildEmptyState();
       }
     } else {
-      content = const Text('Basket list placeholder');
+      content = _buildBasketList(basket, items);
     }
 
     return Scaffold(
