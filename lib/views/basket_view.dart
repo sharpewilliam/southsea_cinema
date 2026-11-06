@@ -85,6 +85,21 @@ class _BasketViewState extends State<BasketView> {
     children.add(const Text('Your Basket', style: cinemaHeaderStyle));
     children.add(const SizedBox(height: 16));
 
+    children.add(const SizedBox(height: 24));
+    children.add(
+      Padding(
+        padding: const EdgeInsets.only(right: 48.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text('Item', style: cinemaHeaderStyle),
+            Text('Description', style: cinemaHeaderStyle),
+            Text('Price', style: cinemaHeaderStyle)
+        ],
+      )
+      )
+    );
+
     for (int i = 0; i < items.length; i++) {
       final BasketItem item = items[i];
       children.add(_buildBasketItem(basket, item, i));
