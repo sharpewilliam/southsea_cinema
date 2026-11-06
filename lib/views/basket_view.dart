@@ -78,6 +78,20 @@ class _BasketViewState extends State<BasketView> {
     );
   }
 
+  Widget _buildBasketList(BasketRepository basket, List<BasketItem> items) {
+    final List<Widget> children = [];
+
+    children.add(const Text('Your Basket', style: cinemaHeaderStyle));
+    children.add(const SizedBox(height: 16));
+
+    for (int i = 0; i < items.length; i++) {
+      final BasketItem item = items[i];
+      children.add(_buildBasketItem(basket, item, i));
+    }
+
+    children.add(const SizedBox(height: 24));
+  }
+
   @override
   Widget build(BuildContext context) {
     final BasketRepository basket = BasketRepository.instance;
