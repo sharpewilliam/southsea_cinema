@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/repositories/basket_repository.dart';
 import 'package:southsea_cinema/models/basket_item.dart';
+import 'package:southsea_cinema/widgets/primary_button.dart';
 
 class BasketView extends StatefulWidget {
   const BasketView({super.key});
@@ -90,6 +91,28 @@ class _BasketViewState extends State<BasketView> {
     }
 
     children.add(const SizedBox(height: 24));
+    children.add(
+      _buildTotalRow(
+        'Total to pay',
+        '£${basket.getTotal().toStringAsFixed(2)}',
+        emphasise: true,
+      )
+    );
+
+    children.add(
+      SizedBox(
+        width: double.infinity,
+        child: PrimaryButton(
+          label: 'Checkout',
+          onPressed: () {
+            setState(() {
+              basket.clear();
+              _confirmationMessage = 'Thank you for your purchase!';
+            });
+          }
+        )
+      )
+    );
   }
 
   @override
