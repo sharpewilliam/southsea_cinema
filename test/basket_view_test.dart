@@ -2,6 +2,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:southsea_cinema/models/movie.dart';
 import 'package:southsea_cinema/models/basket_item.dart';
 import 'package:southsea_cinema/repositories/basket_repository.dart';
+import 'package:flutter/material.dart';
+import 'package:southsea_cinema/views/basket_view.dart';
+
 
 const Movie testMovie = Movie(
   id: 'test_movie',
@@ -24,4 +27,12 @@ void main() {
     BasketRepository.instance.clear();
   });
 
+  testWidgets('BasketView displays empty message when basket has no items', (
+    WidgetTester tester,
+  ) async {
+    await tester.pumpWidget(const MaterialApp(home: BasketView()));
+
+    expect(find.text('Your basket is empty'), findsOneWidget);
+    expect(find.text('Checkout'), findsNothing);
+  });
 }
