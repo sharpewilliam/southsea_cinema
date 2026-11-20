@@ -42,4 +42,8 @@ void main() {
       expect(movie.formattedPrice, '£12.50');
     });
   });
+
+  group('Movie JSON conversion', () {
+
+  });
 }
