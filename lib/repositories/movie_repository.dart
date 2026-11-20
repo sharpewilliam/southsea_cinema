@@ -1,6 +1,10 @@
 import 'package:southsea_cinema/models/movie.dart';
+import 'dart:convert';
+import 'package:flutter/services.dart';
 
 class MovieRepository {
+  List<Movie>? _cachedMovies;
+
   List<Movie> getMovies() {
     return const [
       Movie(
@@ -46,5 +50,11 @@ class MovieRepository {
       }
     }
     return null;
+  }
+
+  Future<List<Movie>> loadMoviesFromAsset({
+    String assetPath = 'assets/data/movies.json',
+  }) async {
+    
   }
 }
