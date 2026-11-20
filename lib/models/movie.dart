@@ -40,7 +40,20 @@ class Movie {
       ticketPrice: ticketPrice,
       posterImagePath: posterImagePath
     );
+  }
 
-  
-}
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{
+      'id': id,
+      'title': title,
+      'synopsis': synopsis,
+      'ageRating': ageRating,
+      'runtime': runtime,
+      'screeningTime': screeningTime,
+      'ticketPrice': ticketPrice,
+      'posterImagePath': posterImagePath,
+    };
+    return data;
+  }
+
 }
