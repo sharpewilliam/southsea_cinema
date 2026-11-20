@@ -30,15 +30,17 @@ class Movie {
     final ticketPrice = (json['ticketPrice'] as num).toDouble();
     final posterImagePath = json['posterImagePath'] as String;
   
-  return Movie(
-    id: id,
-    title: title,
-    synopsis: synopsis,
-    ageRating: ageRating,
-    runtime: runtime,
-    screeningTime: screeningTime,
-    ticketPrice: ticketPrice,
-    posterImagePath: posterImagePath
-  );
+    return Movie(
+      id: id,
+      title: title,
+      synopsis: synopsis,
+      ageRating: ageRating,
+      runtime: runtime,
+      screeningTime: screeningTime,
+      ticketPrice: ticketPrice,
+      posterImagePath: posterImagePath
+    );
+
+  
 }
 }
