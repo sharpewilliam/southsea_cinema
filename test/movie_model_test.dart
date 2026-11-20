@@ -44,6 +44,32 @@ void main() {
   });
 
   group('Movie JSON conversion', () {
+    test('JSON conversion preserves every movie field', () {
+      final Map<String, dynamic> data = <String, dynamic>{
+        'id': 'movie-001',
+        'title': 'The Lord of the Rings return of the king',
+        'synopsis':
+            'Aragorn embraces his destiny as the rightful king while Frodo and Sam make their final push to destroy the One Ring and defeat Sauron.',
+        'ageRating': '12A',
+        'runtime': '178 minutes',
+        'screeningTime': '19:30',
+        'ticketPrice': 12.50,
+        'posterImagePath': 'assets/images/lotr roth.jpeg',
+      };
 
+      final Movie movie = Movie.fromJson(data);
+
+      expect(movie.id, 'movie-001');
+      expect(movie.title, 'The Lord of the Rings return of the king');
+      expect(movie.synopsis,
+          'Aragorn embraces his destiny as the rightful king while Frodo and Sam make their final push to destroy the One Ring and defeat Sauron.');
+      expect(movie.ageRating, '12A');
+      expect(movie.runtime, '178 minutes');
+      expect(movie.screeningTime, '19:30');
+      expect(movie.ticketPrice, 12.50);
+      expect(movie.posterImagePath, 'assets/images/lotr roth.jpeg');
+
+      expect(movie.toJson(), data);
+    });
   });
 }
