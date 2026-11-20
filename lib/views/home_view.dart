@@ -48,19 +48,33 @@ class _HomeViewState extends State<HomeView> {
     }
   }
 
+  @override
   Widget build(BuildContext context) {
-    final movies = MovieRepository().getMovies();
+    final Widget content;
+
+    if (_loading) {
+      content = const Center(
+        child: CircularProgressIndicator(),
+      );
+    } else if (_errorMessage.isNotEmpty) {
+      content = Center(
+        child: Text(_errorMessage),
+      );
+    } else {
+      content = ListView.builder(
+        itemCount: _movies.length,
+        itemBuilder: (BuildContext context, int index) {
+          return MovieCard(movie: _movies[index]);
+        },
+      );
+    }
+
     return Scaffold(
-        appBar: AppBar(
-          title: const Text(appTitle),
-        ),
-        drawer: const NavDrawer(),
-        body: ListView(
-          padding: EdgeInsets.all(cinemaPadding),
-          children: [
-            Text("Now Showing", style: cinemaHeaderStyle),
-            for (final movie in movies) MovieCard(movie: movie),
-          ],
-        ));
+      appBar: AppBar(
+        title: const Text('Southsea Cinema'),
+      ),
+      drawer: const NavDrawer(),
+      body: content,
+    );
   }
 }
