@@ -1,9 +1,11 @@
+
 import 'package:southsea_cinema/models/movie.dart';
 import 'dart:convert';
 import 'package:flutter/services.dart';
 
 class MovieRepository {
-  List<Movie>? _cachedMovies;
+  static List<Movie>? _cachedMovies;
+  static final Map<String, Future<List<Movie>>> _loadingMovies = {};
 
   List<Movie> getMovies() {
     final List<Movie>? cachedMovies = _cachedMovies;
@@ -59,19 +61,25 @@ class MovieRepository {
 
   Future<List<Movie>> loadMoviesFromAsset({
     String assetPath = 'assets/data/movies.json',
-  }) async {
-    final String jsonString = await rootBundle.loadString(assetPath);
-    final dynamic decodedData = jsonDecode(jsonString);
-    final List<dynamic> jsonList = decodedData as List<dynamic>;
-    final List<Movie> loadedMovies = [];
-
-    for (final dynamic item in jsonList) {
-      final Map<String, dynamic> itemMap = item as Map<String, dynamic>;
-      final Movie movie = Movie.fromJson(itemMap);
-      loadedMovies.add(movie);
+  }) {
+    if (_cachedMovies != null) {
+      return Future.value(_cachedMovies);
     }
 
-    _cachedMovies = loadedMovies;
-    return loadedMovies;
+    return _loadingMovies.putIfAbsent(assetPath, () async {
+      final String jsonString = await rootBundle.loadString(assetPath);
+      final dynamic decodedData = jsonDecode(jsonString);
+      final List<dynamic> jsonList = decodedData as List<dynamic>;
+      final List<Movie> loadedMovies = [];
+
+      for (final dynamic item in jsonList) {
+        final Map<String, dynamic> itemMap = item as Map<String, dynamic>;
+        final Movie movie = Movie.fromJson(itemMap);
+        loadedMovies.add(movie);
+      }
+
+      _cachedMovies = loadedMovies;
+      return loadedMovies;
+    });
   }
 }
