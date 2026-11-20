@@ -71,5 +71,23 @@ void main() {
 
       expect(movie.toJson(), data);
     });
+
+    test('fromJson accepts a whole number price and converts to a double', () {
+      final Map<String, dynamic> data = <String, dynamic>{
+        'id': 'movie-001',
+        'title': 'The Lord of the Rings return of the king',
+        'synopsis':
+            'Aragorn embraces his destiny as the rightful king while Frodo and Sam make their final push to destroy the One Ring and defeat Sauron.',
+        'ageRating': '12A',
+        'runtime': '178 minutes',
+        'screeningTime': '19:30',
+        'ticketPrice': 12,
+        'posterImagePath': 'assets/images/lotr roth.jpeg',
+      };
+
+      final Movie movie = Movie.fromJson(data);
+      expect(movie.ticketPrice, 12.00);
+      expect(movie.ticketPrice, isA<double>());
+    });
   });
 }
