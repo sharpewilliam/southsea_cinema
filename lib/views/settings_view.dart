@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:southsea_cinema/constants.dart';
 
 class SettingsView extends StatelessWidget {
   const SettingsView({super.key});
