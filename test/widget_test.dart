@@ -10,6 +10,7 @@ void main() {
       testWidgets("Movie Listings displays titles, cards and booking buttons",
           (WidgetTester tester) async {
         await tester.pumpWidget(const MaterialApp(home: HomeView()));
+        await tester.pumpAndSettle();
         expect(find.text('The Lord of the Rings return of the king'),
             findsOneWidget);
         expect(
@@ -34,6 +35,7 @@ void main() {
         await tester.pumpWidget(
           const MaterialApp(home: HomeView()),
         );
+        await tester.pumpAndSettle();
         await tester.tap(find.text("Book Tickets").first);
         await tester.pumpAndSettle();
         expect(find.text("Select Quantity (Max 5)"), findsOneWidget);
@@ -50,6 +52,7 @@ void main() {
         await tester.pumpWidget(
           const MaterialApp(home: HomeView()),
         );
+        await tester.pumpAndSettle();
         await tester.tap(find.text("Book Tickets").first);
         await tester.pumpAndSettle();
         expect(find.text("Select Quantity (Max 5)"), findsOneWidget);
